@@ -1,0 +1,6 @@
+C:\git-tf\GoReception\Logger\bin\Release\Logger.dll
+C:\git-tf\GoReception\Logger\bin\Release\Logger.pdb
+C:\git-tf\GoReception\Logger\bin\Release\System.Net.Http.dll
+C:\git-tf\GoReception\Logger\bin\Release\System.Net.Http.xml
+C:\git-tf\GoReception\Logger\obj\Release\Logger.dll
+C:\git-tf\GoReception\Logger\obj\Release\Logger.pdb

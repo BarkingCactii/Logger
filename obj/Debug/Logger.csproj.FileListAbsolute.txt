@@ -1,0 +1,14 @@
+C:\git-tf\GoReception\Logger\bin\Debug\Logger.dll
+C:\git-tf\GoReception\Logger\bin\Debug\Logger.pdb
+C:\git-tf\GoReception\Logger\bin\Debug\System.Net.Http.dll
+C:\git-tf\GoReception\Logger\bin\Debug\System.Net.Http.xml
+C:\git-tf\GoReception\Logger\obj\Debug\Logger.dll
+C:\git-tf\GoReception\Logger\obj\Debug\Logger.pdb
+C:\git-tf\GoReception\Logger\obj\Debug\Logger.csprojResolveAssemblyReference.cache
+C:\git-tf\Logger\bin\Debug\Logger.dll
+C:\git-tf\Logger\bin\Debug\Logger.pdb
+C:\git-tf\Logger\bin\Debug\System.Net.Http.dll
+C:\git-tf\Logger\bin\Debug\System.Net.Http.xml
+C:\git-tf\Logger\obj\Debug\Logger.csprojResolveAssemblyReference.cache
+C:\git-tf\Logger\obj\Debug\Logger.dll
+C:\git-tf\Logger\obj\Debug\Logger.pdb
