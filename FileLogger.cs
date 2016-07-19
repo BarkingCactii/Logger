@@ -21,7 +21,6 @@ namespace Logger {
 
         public void Debug(string text)
         {
-            Console.WriteLine(text);
 #if DEBUG
             // don't write debugging info in production builds
             WriteFile(Logger.TimeStamp + " DEBUG: " + text);

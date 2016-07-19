@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace Logger
-{
+namespace Logger {
     public interface ILogger
     {
         string Identity();
@@ -18,14 +14,5 @@ namespace Logger
         void Error(string text);
 
         void Error(string text, Exception ex);
-    }
-
-    public interface IFileLogger : ILogger {
-    }
-
-    public interface IEventLogger : ILogger {
-    }
-
-    public interface IConsoleLogger : ILogger {
     }
 }
