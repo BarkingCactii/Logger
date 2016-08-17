@@ -10,11 +10,6 @@ namespace Logger {
             _appName = appName;
         }
 
-        public string TimeStamp
-        {
-            get { return DateTime.Now.ToString("dd/MM/yy HH:mm:ss"); }
-        }
-
         public string Identity() {
             return "ConsoleLogger";
         }

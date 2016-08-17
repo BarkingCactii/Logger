@@ -70,6 +70,5 @@ namespace Logger {
                 plugin.Flush();
             }
         }
-
     }
 }

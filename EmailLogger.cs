@@ -14,12 +14,6 @@ namespace Logger {
             _message = "";
         }
 
-
-        public string TimeStamp
-        {
-            get { return DateTime.Now.ToString("dd/MM/yy HH:mm:ss"); }
-        }
-
         public string Identity() {
             return "EmailLogger";
         }
@@ -106,43 +100,20 @@ namespace Logger {
             // Set the subject and message body text
             message.Subject = subject;
             message.Body = messageBody;
-
-            message.IsBodyHtml = false;// true;
-
-            /*
-            if (attachments != null) {
-                foreach (var attachment in attachments) {
-                    var attachmentStream = new MemoryStream(attachment.Data);
-                    string mimeType = MimeType.GetMimeType(attachment.Filename.Substring(attachment.Filename.LastIndexOf(".") + 1));
-                    string baseName = attachment.Filename.Substring(attachment.Filename.LastIndexOf("\\") + 1);
-
-                    var messageAttachment = new System.Net.Mail.Attachment(attachmentStream, baseName, mimeType);
-                    message.Attachments.Add(messageAttachment);
-                }
-            }
-            */
-
+            message.IsBodyHtml = false;
             client.UseDefaultCredentials = true;
-            //client.EnableSsl = true; 
 
             // Set the SMTP server to be used to send the message
             client.Host = ConfigurationManager.AppSettings.Get("MailServer").ToString();
-
-            //    Console.WriteLine(String.Format("Sending email to {0} on {1}", toAddress, DateTime.Now.ToString()));
-
-            // set notification callback
-            //   client.SendCompleted += new SendCompletedEventHandler(SendCompletedCallback);
 
             // set delivery options
             message.DeliveryNotificationOptions = DeliveryNotificationOptions.Delay | DeliveryNotificationOptions.OnFailure;// | DeliveryNotificationOptions.OnSuccess;
 
             // Send the e-mail message
             try {
-                //                client.SendAsync(message, userState);
                 client.Send(message);
             }
             catch (SmtpFailedRecipientsException ex) {
-
                 Error("SMTPFailedRecipients exception", ex);
             }
             catch (InvalidOperationException ex) {

@@ -4,12 +4,11 @@ using System.Diagnostics;
 namespace Logger {
     public class EventLogger : IEventLogger {
         private string _appName = "";
+        private static System.Diagnostics.EventLog eventLog = new System.Diagnostics.EventLog();
 
         public EventLogger(string appName) {
             _appName = appName;
         }
-
-        private static System.Diagnostics.EventLog eventLog = new System.Diagnostics.EventLog();
 
         public string Identity() {
             return "EventLogger";

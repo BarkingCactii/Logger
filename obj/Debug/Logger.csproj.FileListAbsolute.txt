@@ -11,4 +11,3 @@ C:\git-tf\Logger\bin\Debug\System.Net.Http.dll
 C:\git-tf\Logger\bin\Debug\System.Net.Http.xml
 C:\git-tf\Logger\obj\Debug\Logger.dll
 C:\git-tf\Logger\obj\Debug\Logger.pdb
-C:\git-tf\Logger\obj\Debug\Logger.csprojResolveAssemblyReference.cache

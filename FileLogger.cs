@@ -7,13 +7,12 @@ namespace Logger {
     public class FileLogger : IFileLogger
     {
         private string _appName = "";
+        static string _buffer = "";
 
         public FileLogger(string appName)
         {
             _appName = appName;
         }
-
-        public static System.Diagnostics.EventLog eventLog = new System.Diagnostics.EventLog();
 
         public string Identity() {
             return "FileLogger";
@@ -60,29 +59,9 @@ namespace Logger {
             }
         }
 
-        static string buffer = "";
-
-        private void WriteFile(string text) {
-            try {
-                string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
-                path = path.Replace("file:\\", "");
-                using (TextWriter tw = new StreamWriter(path + "\\" + _appName + ".log", true)) {
-                    tw.WriteLine(buffer + text);
-                    tw.Close();
-                    buffer = "";
-                }
-            }
-            catch (Exception ex) {
-                buffer += text;
-                Debug("Buffering Log: " + ex.Message);
-                //Console.WriteLine("Buffering: " + ex.Message);
-                EventLog.WriteEntry(_appName, text, EventLogEntryType.Error);
-            }
-        }
-
         public void Flush() {
             try {
-                if (buffer == "")
+                if (_buffer == "")
                     return;
 
                 string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
@@ -100,14 +79,32 @@ namespace Logger {
                 }
 
                 using (TextWriter tw = new StreamWriter(fileName, true)) {
-                    tw.WriteLine(buffer);
+                    tw.WriteLine(_buffer);
                     tw.Close();
-                    buffer = "";
+                    _buffer = "";
                 }
             }
             catch (Exception ex) {
                 Debug("Flushing Log:" + ex.Message);
                 EventLog.WriteEntry(_appName, "Flush error", EventLogEntryType.Error);
+            }
+        }
+
+        private void WriteFile(string text) {
+            try {
+                string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+                path = path.Replace("file:\\", "");
+                using (TextWriter tw = new StreamWriter(path + "\\" + _appName + ".log", true)) {
+                    tw.WriteLine(_buffer + text);
+                    tw.Close();
+                    _buffer = "";
+                }
+            }
+            catch (Exception ex) {
+                _buffer += text;
+                Debug("Buffering Log: " + ex.Message);
+                //Console.WriteLine("Buffering: " + ex.Message);
+                EventLog.WriteEntry(_appName, text, EventLogEntryType.Error);
             }
         }
 
@@ -119,9 +116,9 @@ namespace Logger {
             }
             catch (IOException) {
                 //the file is unavailable because it is:
-                //still being written to
-                //or being processed by another thread
-                //or does not exist (has already been processed)
+                //  still being written to
+                //  or being processed by another thread
+                //  or does not exist (has already been processed)
                 return true;
             }
             finally {
