@@ -46,5 +46,8 @@ namespace Logger {
                 Error(text + Environment.NewLine + ex.Message + Environment.NewLine + ex.StackTrace);
             }
         }
+
+        public void Flush() {
+        }
     }
 }

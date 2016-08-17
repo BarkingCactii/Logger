@@ -42,7 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmailLogger.cs" />
     <Compile Include="ConsoleLogger.cs" />
+    <Compile Include="IEmailLogger.cs" />
     <Compile Include="IConsoleLogger.cs" />
     <Compile Include="IEventLogger.cs" />
     <Compile Include="IFileLogger.cs" />

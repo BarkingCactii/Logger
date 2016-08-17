@@ -14,6 +14,7 @@ namespace Stub {
             _log.Info("Info message");
             _log.Warn("Warn message");
             _log.Error("Error message");
+            _log.Flush();
             Console.WriteLine("Done");
         }
     }

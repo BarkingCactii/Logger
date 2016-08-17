@@ -14,5 +14,7 @@ namespace Logger {
         void Error(string text);
 
         void Error(string text, Exception ex);
+
+        void Flush();
     }
 }

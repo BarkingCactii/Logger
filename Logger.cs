@@ -64,5 +64,12 @@ namespace Logger {
                 plugin.Error(text, ex);
             }
         }
+
+        public void Flush() {
+            foreach (ILogger plugin in _plugins) {
+                plugin.Flush();
+            }
+        }
+
     }
 }
